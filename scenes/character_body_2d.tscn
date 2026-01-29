@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5srvh1s8odge"]
+
+[ext_resource type="PackedScene" uid="uid://cvxmn6oagdphd" path="res://Assets/sprites/animated_sprite_2d.tscn" id="1_lj8jo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f50pn"]
+size = Vector2(159, 101)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("1_lj8jo")]
+position = Vector2(96, 55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(95.5, 54.5)
+shape = SubResource("RectangleShape2D_f50pn")
