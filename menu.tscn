@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bwm6ob8ukx2xw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MenuBar" type="MenuBar" parent="."]
+offset_right = 140.0
+offset_bottom = 93.0
+
+[node name="PopupMenu" type="PopupMenu" parent="MenuBar"]
