@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bb5hmjb2i2aex"]
+
+[node name="credits" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+light_mask = 17
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+text = "Credits
+_________________________
+A project made by 
+Ryan Stabinski, Scott Larson, Logan Murray
+
+Programming: Ryan Stabinski, Scott Larson
+
+Art Design: Logan Murray
+
+Sound Design: Scott Larson, Logan Murray
+
+Emotional Support polish man: Ryan Stabinski"
