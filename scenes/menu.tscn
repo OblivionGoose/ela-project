@@ -20,3 +20,10 @@ offset_top = 167.0
 offset_right = 1072.0
 offset_bottom = 262.0
 text = "Credits"
+
+[node name="Quitbutton" type="Button" parent="."]
+offset_left = 42.0
+offset_top = 307.0
+offset_right = 1072.0
+offset_bottom = 402.0
+text = "Quit Game"

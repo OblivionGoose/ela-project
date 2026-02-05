@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ELA-Project"
-run/main_scene="uid://b6k7keqpg3cqx"
+run/main_scene="uid://bwm6ob8ukx2xw"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

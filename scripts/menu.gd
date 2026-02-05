@@ -3,10 +3,14 @@ extends Node2D
 func _ready():
 	var button = $StartButton
 	var cred = $CreditButton
-	button.text = "Click me"
+	var quit = $Quitbutton
+	quit.pressed.connect(_quit_pressed)
 	cred.pressed.connect(_credit_pressed)
 	button.pressed.connect(_button_pressed)
 	add_child(button)
+
+func _quit_pressed():
+	get_tree().quit(0)
 
 func _credit_pressed():
 	get_tree().change_scene_to_file("res://scenes/credit.tscn")
