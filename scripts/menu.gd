@@ -16,8 +16,7 @@ func _credit_pressed():
 	get_tree().change_scene_to_file("res://scenes/credit.tscn")
 
 func _button_pressed():
-	print("Hello world!")
-	get_tree().change_scene_to_file("res://scenes/node_2d.tscn")
+	get_tree().change_scene_to_file("res://scenes/save_file_menu.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
