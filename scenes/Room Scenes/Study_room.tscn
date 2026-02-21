@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cesysrn7m5neh"]
+
+[ext_resource type="Script" uid="uid://bk0nncip3agcd" path="res://scripts/room scripts/study_room.gd" id="1_pjvpb"]
+
+[node name="Study_room" type="Node2D"]
+script = ExtResource("1_pjvpb")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 28.0
+offset_top = 88.0
+offset_right = 188.0
+offset_bottom = 220.0
+
+[node name="Arrow" type="Polygon2D" parent="Button"]
+position = Vector2(104, 10.000008)
+scale = Vector2(1.5733694, 1.3625)
+color = Color(0.07, 0.07, 0.07, 1)
+polygon = PackedVector2Array(-66.8687, 43.01348, -31.732822, 84.89988, -30.823536, 56.896782, 33.17613, 56.689453, 33.065983, 22.689629, -30.432064, 23.395338, -32.516285, -2.5980453, -66.8687, 43.01348)
+uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 34.0
+offset_top = 427.0
+offset_right = 192.0
+offset_bottom = 546.0
+
+[node name="Arrow" type="Polygon2D" parent="Button2"]
+position = Vector2(108, 4)
+scale = Vector2(1.5733694, 1.3625)
+color = Color(0.07, 0.07, 0.07, 1)
+polygon = PackedVector2Array(-66.89978, 42.18144, -32.585545, 84.743546, -31.131577, 56.763443, 32.860004, 57.801388, 33.41142, 23.805855, -30.08834, 23.275955, -31.666414, -2.753067, -66.89978, 42.18144)
+uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)

@@ -1,0 +1,2 @@
+https://forum.godotengine.org/t/playing-sound-fx/57980/6
+	helped make a way to import sound bites

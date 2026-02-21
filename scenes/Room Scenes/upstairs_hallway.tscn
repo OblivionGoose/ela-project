@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdj65mkpm5v0h"]
+
+[ext_resource type="Script" uid="uid://28odfeuqd5nf" path="res://scripts/room scripts/upstairs_hallway.gd" id="1_dnty6"]
+
+[node name="Upstairs_hallway" type="Node2D"]
+script = ExtResource("1_dnty6")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 483.0
+offset_top = 66.0
+offset_right = 622.0
+offset_bottom = 203.0
+
+[node name="Arrow" type="Polygon2D" parent="Button"]
+position = Vector2(108.00003, 3.0000076)
+scale = Vector2(1.5733694, 1.3625)
+color = Color(0.07, 0.07, 0.07, 1)
+polygon = PackedVector2Array(-26.488588, -1.7257729, -68.08573, 33.75208, -40.076126, 34.431923, -39.34449, 98.42774, -5.346712, 98.03906, -6.5726013, 34.548923, 19.40284, 32.251823, -26.488588, -1.7257729)
+uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 97.0
+offset_top = 220.0
+offset_right = 255.0
+offset_bottom = 339.0
+
+[node name="Arrow" type="Polygon2D" parent="Button2"]
+position = Vector2(106, 5.0000076)
+scale = Vector2(1.5733694, 1.3625)
+color = Color(0.07, 0.07, 0.07, 1)
+polygon = PackedVector2Array(-66.892975, 42.406395, -32.355354, 84.78744, -31.048567, 56.800076, 32.94759, 57.501442, 33.32019, 23.50348, -30.181475, 23.307566, -31.896425, -2.7127953, -66.892975, 42.406395)
+uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 920.0
+offset_top = 437.0
+offset_right = 1076.0
+offset_bottom = 553.0
+
+[node name="Arrow" type="Polygon2D" parent="Button3"]
+position = Vector2(128.00003, 3.0000076)
+scale = Vector2(1.5733694, 1.3625)
+color = Color(0.07, 0.07, 0.07, 1)
+polygon = PackedVector2Array(18.616074, 38.93147, -16.573723, -2.9096375, -17.446943, 25.094603, -81.44629, 25.384361, -81.29235, 59.38401, -17.795267, 58.59652, -15.677573, 84.587204, 18.616074, 38.93147)
+uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)

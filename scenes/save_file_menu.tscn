@@ -10,6 +10,7 @@ offset_left = 63.0
 offset_top = 496.0
 offset_right = 377.0
 offset_bottom = 612.0
+text = "terminator"
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 210.0
@@ -28,6 +29,7 @@ offset_left = 744.0
 offset_top = 492.0
 offset_right = 1058.0
 offset_bottom = 608.0
+text = "the game(trademarked)"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 109.0
