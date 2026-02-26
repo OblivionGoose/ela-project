@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-globals="*res://scripts/globals.gd"
+globals="*res://scripts/singletons/globals.gd"
 
 [rendering]
 
