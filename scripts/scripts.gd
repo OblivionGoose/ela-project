@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		audio.play()
 		audio2.play()
-		audio3.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

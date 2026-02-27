@@ -1,5 +1,6 @@
 extends Node2D
 
+var fade: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,9 +20,17 @@ func _button_pressed2():
 	globals.new_room = "Study"
 
 func _button_pressed3():
+	get_parent().is_fade_in = true
+	var timer = $Timer
+	timer.start()
+	timer.timeout.connect(move_scene3)
+func move_scene3():
 	globals.game_controller.change_2d_scene("res://scenes/Room Scenes/living_room.tscn")
 	globals.new_room = "Living"
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var black_screen = $BlackTransition
+	if fade:
+		pass
