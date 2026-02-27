@@ -37,7 +37,6 @@ offset_bottom = 82.0
 position = Vector2(576, 309)
 
 [node name="BlackTransition" type="Polygon2D" parent="World2D"]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(654.30646, 78.781876)
 scale = Vector2(4.1762457, 4.484693)
 color = Color(0, 0, 0, 1)

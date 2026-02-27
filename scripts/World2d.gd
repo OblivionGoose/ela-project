@@ -6,6 +6,8 @@ var Camera_x: float = 0
 var Camera_y: float = 0
 var x = 0
 var y = 0
+var Camera_speed: float = 1
+var Camera_intensity: float = 1
 var opacity: float = 0
 var is_fade_out: bool = false
 
@@ -92,6 +94,7 @@ func _scene_change():
 	opacity = 1
 	is_fade_out = true
 
+# Called whenever the black screen needs to fade in or out.
 func _fade():
 	var black_screen = $BlackTransition
 	black_screen.modulate = Color(1,1,1,opacity)
@@ -106,7 +109,9 @@ func _process(delta: float) -> void:
 		Camera_y = 0
 		x = 0
 		y = 0
-	
+		var black_screen = $BlackTransition
+		black_screen.modulate = Color(1,1,1,1)
+# processes the fading out sequence
 	if is_fade_out:
 		if opacity == 0:
 			is_fade_out = false
@@ -115,9 +120,9 @@ func _process(delta: float) -> void:
 			_fade()
 # Processes idle Camera movement. 
 	var Camera = $Camera2D
-	x += delta/2
-	y += delta/2
-	Camera_x += cos(x) / 14.19
-	Camera_y += sin(y) / 8
+	x += delta * Camera_speed/2
+	y += delta * Camera_speed/2
+	Camera_x += cos(x) * Camera_intensity * Camera_speed / 14.19
+	Camera_y += sin(y) * Camera_intensity * Camera_speed / 8
 	Camera.set_offset(Vector2(Camera_x, Camera_y))
 	

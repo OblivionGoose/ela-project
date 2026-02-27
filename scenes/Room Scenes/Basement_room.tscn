@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cidw2tfy67nga"]
+[gd_scene load_steps=3 format=3 uid="uid://cidw2tfy67nga"]
 
 [ext_resource type="Script" uid="uid://dv0yjvs6xjuqn" path="res://scripts/room scripts/basement_room.gd" id="1_g4fyu"]
+[ext_resource type="Texture2D" uid="uid://bynrsldawkssd" path="res://Assets/sprites/ImpTemplate.jpg" id="2_g0q8o"]
 
 [node name="Basement_room" type="Node2D"]
 script = ExtResource("1_g4fyu")
@@ -17,3 +18,21 @@ scale = Vector2(1.5733694, 1.3625)
 color = Color(0.07, 0.07, 0.07, 1)
 polygon = PackedVector2Array(-66.8687, 43.01348, -31.732822, 84.89988, -30.823536, 56.896782, 33.17613, 56.689453, 33.065983, 22.689629, -30.432064, 23.395338, -32.516285, -2.5980453, -66.8687, 43.01348)
 uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.7999999999999998
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1016, 570.00006)
+scale = Vector2(0.2441457, 0.23828125)
+texture = ExtResource("2_g0q8o")
+
+[node name="BlackTransition" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(654.30646, 78.781876)
+scale = Vector2(4.1762457, 4.484693)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
+uv = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
