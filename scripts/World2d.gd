@@ -116,7 +116,7 @@ func _process(delta: float) -> void:
 		if opacity == 0:
 			is_fade_out = false
 		else:
-			opacity -= .01
+			opacity -= .02
 			_fade()
 # Processes idle Camera movement. 
 	var Camera = $Camera2D

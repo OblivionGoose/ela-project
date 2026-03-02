@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 	var black_screen = $BlackTransition
 	
 	if fade:
-		opacity += 0.01
+		opacity += 0.02
 		black_screen.modulate = Color(1,1,1,opacity)
 	else:
 		black_screen.modulate = Color(1,1,1,0)

@@ -20,7 +20,7 @@ polygon = PackedVector2Array(-66.8687, 43.01348, -31.732822, 84.89988, -30.82353
 uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.7999999999999998
+wait_time = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1

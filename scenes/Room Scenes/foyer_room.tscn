@@ -47,7 +47,7 @@ polygon = PackedVector2Array(18.616074, 38.93147, -16.573723, -2.9096375, -17.44
 uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.7999999999999998
+wait_time = 0.5
 
 [node name="BlackTransition" type="Polygon2D" parent="."]
 modulate = Color(1, 1, 1, 0)
