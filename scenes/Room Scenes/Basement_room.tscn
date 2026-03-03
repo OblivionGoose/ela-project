@@ -1,29 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://cidw2tfy67nga"]
+[gd_scene load_steps=4 format=3 uid="uid://cidw2tfy67nga"]
 
 [ext_resource type="Script" uid="uid://dv0yjvs6xjuqn" path="res://scripts/room scripts/basement_room.gd" id="1_g4fyu"]
-[ext_resource type="Texture2D" uid="uid://bynrsldawkssd" path="res://Assets/sprites/ImpTemplate.jpg" id="2_g0q8o"]
+[ext_resource type="Texture2D" uid="uid://bynrsldawkssd" path="res://Assets/sprites/monster sprites/ImpTemplate.jpg" id="2_g0q8o"]
+[ext_resource type="Texture2D" uid="uid://lt7ykrpvq6h0" path="res://Assets/sprites/room sprites/2137902301756913125.png" id="3_g5lb6"]
 
 [node name="Basement_room" type="Node2D"]
 script = ExtResource("1_g4fyu")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 28.0
-offset_top = 88.0
-offset_right = 188.0
-offset_bottom = 220.0
+offset_left = 508.0
+offset_top = 509.0
+offset_right = 593.0
+offset_bottom = 618.0
 
-[node name="Arrow" type="Polygon2D" parent="Button"]
-position = Vector2(104, 10.000008)
-scale = Vector2(1.5733694, 1.3625)
+[node name="Arrow2" type="Polygon2D" parent="Button"]
+position = Vector2(64.58267, 18.269733)
+scale = Vector2(0.9325227, 1.0714061)
 color = Color(0.07, 0.07, 0.07, 1)
-polygon = PackedVector2Array(-66.8687, 43.01348, -31.732822, 84.89988, -30.823536, 56.896782, 33.17613, 56.689453, 33.065983, 22.689629, -30.432064, 23.395338, -32.516285, -2.5980453, -66.8687, 43.01348)
+polygon = PackedVector2Array(-22.25, 83.75, 19.75, 48.75, -8.25, 47.75, -8.25, -16.25, -42.25, -16.25, -41.75, 47.25, -67.75, 49.25, -22.25, 83.75)
 uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25, -42.25, -16.25, -41.75, 46.25, -67.75, 52.75, -29.25, 83.75)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
 position = Vector2(1016, 570.00006)
 scale = Vector2(0.2441457, 0.23828125)
 texture = ExtResource("2_g0q8o")
@@ -36,3 +36,9 @@ scale = Vector2(4.1762457, 4.484693)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
 uv = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(577.5, 324)
+scale = Vector2(0.6182292, 0.6296296)
+texture = ExtResource("3_g5lb6")

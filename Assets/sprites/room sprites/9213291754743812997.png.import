@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bynrsldawkssd"
-path="res://.godot/imported/ImpTemplate.jpg-6927361d879ddeb8bba6f6092efd29a6.ctex"
+uid="uid://060y0qe2ujev"
+path="res://.godot/imported/9213291754743812997.png-603925ea587ac6305d4b5101b2d61abf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/ImpTemplate.jpg"
-dest_files=["res://.godot/imported/ImpTemplate.jpg-6927361d879ddeb8bba6f6092efd29a6.ctex"]
+source_file="res://Assets/sprites/room sprites/9213291754743812997.png"
+dest_files=["res://.godot/imported/9213291754743812997.png-603925ea587ac6305d4b5101b2d61abf.ctex"]
 
 [params]
 

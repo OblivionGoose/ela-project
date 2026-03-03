@@ -7,3 +7,4 @@ var new_room: String = "Foyer"
 var day: int = 1 # set first day
 var is_night: bool = false # set day time
 var time_of_day: String = "Day 1"
+var monsters: String
