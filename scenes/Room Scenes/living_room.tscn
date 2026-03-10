@@ -42,7 +42,6 @@ uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25
 wait_time = 0.5
 
 [node name="BlackTransition" type="Polygon2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 1
 position = Vector2(654.30646, 78.781876)
@@ -50,3 +49,9 @@ scale = Vector2(4.1762457, 4.484693)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
 uv = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
+
+[node name="Button3" type="Button" parent="."]
+offset_left = -29.0
+offset_top = 20.0
+offset_right = 72.0
+offset_bottom = 435.0

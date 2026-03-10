@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var black_screen = $BlackTransition
 var fade: bool = false
 var opacity: float = 0
 
@@ -10,7 +11,6 @@ func _ready():
 	button1.pressed.connect(_button_pressed)
 	button2.pressed.connect(_button_pressed2)
 	button3.pressed.connect(_button_pressed3)
-	var black_screen = $BlackTransition
 	black_screen.modulate = Color(1,1,1,1)
 
 
@@ -22,8 +22,8 @@ func _button_pressed():
 	timer.start()
 	timer.timeout.connect(move_scene1)
 func move_scene1():
+	globals.scene_room = "Bedroom"
 	globals.game_controller.change_2d_scene("res://scenes/Room Scenes/bedroom.tscn")
-	globals.new_room = "bedroom"
 
 func _button_pressed2():
 	fade = true
@@ -33,9 +33,9 @@ func _button_pressed2():
 	timer.start()
 	timer.timeout.connect(move_scene2)
 func move_scene2():
+	globals.scene_room = "Bathroom"
 	globals.game_controller.change_2d_scene("res://scenes/Room Scenes/bathroom.tscn")
-	globals.new_room = "Bathroom"
-	
+
 func _button_pressed3():
 	fade = true
 	var button1 = $Button
@@ -44,12 +44,11 @@ func _button_pressed3():
 	timer.start()
 	timer.timeout.connect(move_scene3)
 func move_scene3():
+	globals.scene_room = "Foyer"
 	globals.game_controller.change_2d_scene("res://scenes/Room Scenes/foyer_room.tscn")
-	globals.new_room = "Foyer"
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var black_screen = $BlackTransition
 	
 	if fade:
 		opacity += 0.02

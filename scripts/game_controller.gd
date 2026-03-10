@@ -5,6 +5,8 @@ class_name GameController extends Node
 var current_2d_scene 
 var current_gui_scene
 
+signal scene_change
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	globals.game_controller = self
@@ -21,6 +23,7 @@ func change_2d_scene(new_scene: String, delete: bool = true, keep_running: bool 
 	var new = load(new_scene).instantiate()
 	world_2d.add_child(new)
 	current_2d_scene = new
+	emit_signal("scene_change")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

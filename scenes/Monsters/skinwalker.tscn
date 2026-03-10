@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://132hbsnqwcxf"]
+
+[ext_resource type="Script" uid="uid://3w5lc6bmxhdk" path="res://scripts/monster scripts/skinwalker.gd" id="1_yyhxc"]
+[ext_resource type="Texture2D" uid="uid://bynrsldawkssd" path="res://Assets/sprites/monster sprites/ImpTemplate.jpg" id="2_e5ls8"]
+
+[node name="Skinwalker" type="Node2D"]
+script = ExtResource("1_yyhxc")
+
+[node name="Study_window" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(994, 312)
+scale = Vector2(0.22679967, 0.22851563)
+texture = ExtResource("2_e5ls8")
+
+[node name="Living_window" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(998, 304)
+scale = Vector2(0.22679967, 0.22851563)
+texture = ExtResource("2_e5ls8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 582.0
+offset_top = 190.0
+offset_right = 762.0
+offset_bottom = 344.0
+text = "I am dog. yip yap. Not a skinwalker. "

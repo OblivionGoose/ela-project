@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cidw2tfy67nga"]
+[gd_scene load_steps=3 format=3 uid="uid://cidw2tfy67nga"]
 
-[ext_resource type="Script" uid="uid://dv0yjvs6xjuqn" path="res://scripts/room scripts/basement_room.gd" id="1_g4fyu"]
-[ext_resource type="Texture2D" uid="uid://bynrsldawkssd" path="res://Assets/sprites/monster sprites/ImpTemplate.jpg" id="2_g0q8o"]
-[ext_resource type="Texture2D" uid="uid://lt7ykrpvq6h0" path="res://Assets/sprites/room sprites/2137902301756913125.png" id="3_g5lb6"]
+[ext_resource type="Script" uid="uid://dv0yjvs6xjuqn" path="res://scripts/room scripts/basement_room.gd" id="1_nvpmw"]
+[ext_resource type="Texture2D" uid="uid://lt7ykrpvq6h0" path="res://Assets/sprites/room sprites/2137902301756913125.png" id="2_c8brj"]
 
 [node name="Basement_room" type="Node2D"]
-script = ExtResource("1_g4fyu")
+script = ExtResource("1_nvpmw")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 508.0
@@ -23,11 +22,6 @@ uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1016, 570.00006)
-scale = Vector2(0.2441457, 0.23828125)
-texture = ExtResource("2_g0q8o")
-
 [node name="BlackTransition" type="Polygon2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 1
@@ -41,4 +35,4 @@ uv = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.
 z_index = -1
 position = Vector2(577.5, 324)
 scale = Vector2(0.6182292, 0.6296296)
-texture = ExtResource("3_g5lb6")
+texture = ExtResource("2_c8brj")

@@ -1,12 +1,28 @@
 [gd_scene load_steps=3 format=3 uid="uid://bho06v3vva4uv"]
 
-[ext_resource type="Script" uid="uid://bwc3stssvlt7f" path="res://scenes/Monsters/imp.gd" id="1_y1f68"]
+[ext_resource type="Script" uid="uid://bwc3stssvlt7f" path="res://scripts/monster scripts/imp.gd" id="1_y1f68"]
 [ext_resource type="Texture2D" uid="uid://bynrsldawkssd" path="res://Assets/sprites/monster sprites/ImpTemplate.jpg" id="2_lo7os"]
 
 [node name="Imp" type="Node2D"]
 script = ExtResource("1_y1f68")
 
-[node name="Study_window1" type="Sprite2D" parent="."]
+[node name="Study_window" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
 position = Vector2(222, 364)
 scale = Vector2(0.22679967, 0.22851563)
 texture = ExtResource("2_lo7os")
+
+[node name="Living_window" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(222, 364)
+scale = Vector2(0.22679967, 0.22851563)
+texture = ExtResource("2_lo7os")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 358.0
+offset_top = 144.0
+offset_right = 538.0
+offset_bottom = 298.0
+text = "Hey, wanna go to bed together? just please don't lock me in the basement"
