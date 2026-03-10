@@ -1,0 +1,26 @@
+[gd_scene load_steps=0 format=3 uid="uid://bgdvyygudnkcn"]
+
+[ext_resource type="Script" path="res://scripts/World2d.gd" id="1_gyxxy"]
+[ext_resource type="PackedScene" uid="uid://cnwcvxr8m8uwc" path="res://inventory_ui.tscn" id="2_4m06l"]
+[ext_resource type="Script" uid="uid://dmld4pi0b752m" path="res://scripts/pickup.gd" id="3_hqyie"]
+[ext_resource type="Script" uid="uid://blwav3b3lep7x" path="res://scripts/item_data.gd" id="4_4m06l"]
+
+[sub_resource type="Resource" id="Resource_hqyie"]
+script = ExtResource("4_4m06l")
+metadata/_custom_type_script = "uid://blwav3b3lep7x"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0qhb"]
+
+[node name="World2d" type="Node2D" unique_id=1403686549]
+script = ExtResource("1_gyxxy")
+
+[node name="InventoryUI" parent="." unique_id=535104878 instance=ExtResource("2_4m06l")]
+
+[node name="pickup" type="Area2D" parent="." unique_id=384678870]
+script = ExtResource("3_hqyie")
+item = SubResource("Resource_hqyie")
+
+[node name="Sprite2D" type="Sprite2D" parent="pickup" unique_id=925894064]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup" unique_id=294358628]
+shape = SubResource("CircleShape2D_t0qhb")

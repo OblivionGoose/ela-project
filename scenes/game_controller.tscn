@@ -10,6 +10,7 @@ world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 
 [node name="World2D" parent="." instance=ExtResource("2_vgxje")]
+visible = false
 
 [node name="Foyer_Room" parent="World2D" instance=ExtResource("3_vgxje")]
 

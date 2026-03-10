@@ -1,0 +1,18 @@
+[gd_scene load_steps=0 format=3 uid="uid://c7f2k3pyyrycm"]
+
+[ext_resource type="Script" uid="uid://ne6wbgd7rr3v" path="res://item_slot.gd" id="1_n6cxc"]
+
+[node name="ItemSlot" type="Panel" unique_id=1773635494]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n6cxc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=129092494]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=1334850739]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
