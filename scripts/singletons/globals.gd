@@ -1,10 +1,17 @@
 extends Node
 
 var game_controller : GameController # to connect w/ game controller 
-
 var scene_room: String = "Foyer" # set initial room
-var new_room: String = "Foyer"
 var day: int = 1 # set first day
 var is_night: bool = false # set day time
 var time_of_day: String = "Day 1"
-var monsters: String
+var cause_of_death: String
+var monsters: Array = ["imp", "skinwalker"]
+var imp: bool = false
+var skinwalker: bool = false
+var hour: int = 12
+var minute: int = 0
+
+
+func monsters_size():
+	return monsters.size()

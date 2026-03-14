@@ -51,7 +51,6 @@ uv = PackedVector2Array(-22.25, 83.75, 24.25, 59.25, -4.75, 55.75, -6.75, -15.25
 wait_time = 0.5
 
 [node name="BlackTransition" type="Polygon2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 1
 position = Vector2(654.30646, 78.781876)
