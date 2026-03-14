@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvjdw5gtacqjj"]
+[gd_scene load_steps=5 format=3 uid="uid://bvjdw5gtacqjj"]
 
 [ext_resource type="Script" uid="uid://0sr82fmnrlqq" path="res://scripts/game_controller.gd" id="1_soqow"]
 [ext_resource type="PackedScene" uid="uid://bt0ym25h4jykj" path="res://scenes/world_2d.tscn" id="2_vgxje"]
 [ext_resource type="PackedScene" uid="uid://ddp40j6fm5vaa" path="res://scenes/Room Scenes/foyer_room.tscn" id="3_vgxje"]
+[ext_resource type="AudioStream" uid="uid://dkqp6d872rx1x" path="res://Assets/sound/crash-sound.mp3" id="4_rc0pn"]
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world_2d", "gui")]
 script = ExtResource("1_soqow")
@@ -14,7 +15,7 @@ gui = NodePath("GUI")
 [node name="Foyer_Room" parent="World2D" instance=ExtResource("3_vgxje")]
 
 [node name="Timer" type="Timer" parent="World2D"]
-wait_time = 0.02
+wait_time = 0.07
 
 [node name="RichTextLabel" type="RichTextLabel" parent="World2D"]
 offset_left = 1230.0
@@ -47,15 +48,40 @@ offset_top = 432.0
 offset_right = 1554.0
 offset_bottom = 571.0
 
+[node name="RichTextLabel6" type="RichTextLabel" parent="World2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 346.0
+offset_top = 146.0
+offset_right = 752.0
+offset_bottom = 316.0
+
 [node name="Camera2D" type="Camera2D" parent="World2D"]
 position = Vector2(576, 309)
 
 [node name="BlackTransition" type="Polygon2D" parent="World2D"]
+z_index = 1
 position = Vector2(676.99994, 79.00001)
 scale = Vector2(4.1762457, 4.484693)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
 uv = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World2D"]
+stream = ExtResource("4_rc0pn")
+
+[node name="Add 5 minutes" type="Button" parent="World2D"]
+offset_left = 965.0
+offset_top = -2.0
+offset_right = 1033.0
+offset_bottom = 59.0
+text = "+5"
+
+[node name="Add 30 minutes" type="Button" parent="World2D"]
+offset_left = 1039.0
+offset_right = 1100.0
+offset_bottom = 55.0
+text = "+30"
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
@@ -64,3 +90,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [connection signal="scene_change" from="." to="World2D" method="_scene_change"]
+[connection signal="timeout" from="World2D/Timer" to="World2D" method="_on_timer_timeout"]
+[connection signal="pressed" from="World2D/Add 5 minutes" to="World2D" method="_on_add_5_minutes_pressed"]
+[connection signal="pressed" from="World2D/Add 30 minutes" to="World2D" method="_on_add_30_minutes_pressed"]

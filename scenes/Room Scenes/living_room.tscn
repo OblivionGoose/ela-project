@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bn4s7grhvui3i" path="res://scripts/room scripts/living_room.gd" id="1_xal5j"]
 [ext_resource type="Texture2D" uid="uid://daauqwlh52bll" path="res://Assets/sprites/room sprites/4520036754110369031.png" id="2_b1p5m"]
 
-[node name="living room" type="Node2D"]
+[node name="living" type="Node2D"]
 script = ExtResource("1_xal5j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

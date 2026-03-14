@@ -1,14 +1,17 @@
 extends Node2D
 
 @onready var clock = $Timer
+@onready var audio = $AudioStreamPlayer
 @onready var black_screen = $BlackTransition
 @onready var text_room = $RichTextLabel
 @onready var clock_text = $RichTextLabel2
 @onready var text_daytime = $RichTextLabel3
 @onready var monster_text = $RichTextLabel4
 @onready var monster_text2 = $RichTextLabel5
+@onready var nightchange_text = $RichTextLabel6
 var rng = RandomNumberGenerator.new()
-var minute: int = -5
+var clock_speed = 0.02
+var minute: int = 0
 var hour: int = 12
 var Camera_x: float = 0
 var Camera_y: float = 0
@@ -19,6 +22,7 @@ var Camera_intensity: float = 1
 var loop: bool = true
 var opacity: float = 0
 var is_fade_out: bool = false
+var is_fade_in: bool = false
 var spawn_rate: int = 20
 var imps_killed: int = 0
 var skinwalker_killed: int = 0
@@ -27,6 +31,7 @@ var skinwalker_killed: int = 0
 func _ready():
 	_scene_change()
 	Clock()
+	print("HI")
 	clock.timeout.connect(Clock)
 	text_daytime.add_text(str(globals.time_of_day))
 	rng.randomize()
@@ -35,15 +40,20 @@ func _ready():
 # Calls the timer node to simulate a military analog clock.
 # change timer wait to change the speed of time, wait time = 5 minutes in game
 func Clock():
-	clock.start()
+	if globals.is_night:
+		clock.start()
+		minute += 5
+		print("tick") 
+
+	
+	if globals.is_night:
+		random_monster_summon()
+	
 	var clockMinute = "00"
 	var clockHour = "00"
-	var random = RandomNumberGenerator.new()
-	random.randomize()
-	minute = minute + 5
 	if minute == 60:
 		minute = 0
-		hour += + 1
+		hour += 1
 	if hour == 24:
 		hour = 0
 		day_change()
@@ -55,15 +65,43 @@ func Clock():
 		clockMinute = "0" + str(minute)
 	else:
 		clockMinute = str(minute)
+	globals.hour = hour
+	globals.minute = minute
 	if hour == 6 && minute == 0:
 		night_change()
 	if hour == 21 && minute == 0:
 		night_change()
+		unpause_clock()
+	print(clockHour + ":" + clockMinute)
 	clock_text.clear()
 	clock_text.add_text(clockHour + ":" + clockMinute)
-	
-	if globals.is_night:
-		random_monster_summon()
+
+func time_change(added_time: int):
+	var new_time: int
+	new_time = hour + (minute+added_time)/60 # intended
+	if new_time > 21:
+		printerr("Error! time added surpassed the nighttime cut off at hour 21")
+		hour = 21 
+		minute = 0
+		Clock()
+	elif new_time == 21:
+		if (minute + added_time) % 60 != 0:
+			printerr("Error! time added surpassed the nighttime cut off at minute 00 (hour 21)")
+			hour = 21 
+			minute = 0
+			Clock()
+		else:
+			minute = (minute + added_time) - (new_time - hour)*60 
+			hour = new_time
+			Clock()
+			print("added " + str(added_time) + " minutes successfully!")
+
+	else:
+		minute = (minute + added_time) - (new_time - hour)*60 
+		hour = new_time
+		Clock()
+		print("added " + str(added_time) + " minutes successfully!")
+
 
 # called when time is 00:00, i.e the day changes calendar-wise
 func day_change():
@@ -77,15 +115,122 @@ func night_change():
 	else:
 		globals.is_night = true
 		globals.time_of_day = "Night " + str(globals.day)
+	
+	if globals.scene_room == "Foyer":
+		var room = $Foyer_Room
+		room.unbutton()
+	elif globals.scene_room == "Basement":
+		var room = $Basement_room
+		room.unbutton()
+	elif globals.scene_room == "Bathroom":
+		var room = $bathroom
+		room.unbutton()
+	elif globals.scene_room == "Bedroom":
+		var room = $bedroom
+		room.unbutton()
+	elif globals.scene_room == "Kitchen":
+		var room = $Kitchen_room
+		room.unbutton()
+	elif globals.scene_room == "Living":
+		var room = $living
+		room.unwindow()
+		room.unbutton()
+	elif globals.scene_room == "Study":
+		var room = $Study_room
+		room.unwindow()
+		room.unbutton()
+	else:
+		var room = $Upstairs_hallway
+		room.unbutton()
+		
+	nightchange_text.show()
 	# process day to night transition
 	if globals.is_night:
-		pause_clock()
+		print("changing to night")
+		is_fade_out = false
+		is_fade_in = true
+		audio.play()
+		nightchange_text.clear()
+		nightchange_text.add_text(globals.time_of_day)
+		clock.timeout.disconnect(Clock)
+		clock.set_wait_time(5.0)
+		clock.start()
+		clock.timeout.connect(night_transition)
 	# process night to day transition
 	else:
-		pause_clock()
+		print("changing to day")
+		is_fade_out = false
+		is_fade_in = true
+		audio.play()
+		nightchange_text.clear()
+		nightchange_text.add_text(globals.time_of_day)
+		clock.timeout.disconnect(Clock)
+		clock.set_wait_time(5.0)
+		hour = 14
+		clock.start()
+		clock.timeout.connect(night_transition)
 	text_daytime.clear()
 	text_daytime.add_text(str(globals.time_of_day))
-	
+
+func night_transition():
+	is_fade_out = true
+	print("night_transition" + str(clock.get_wait_time()))
+	clock.timeout.disconnect(night_transition)
+	clock.set_wait_time(5)
+	clock.timeout.connect(reconnect_clock)
+
+func day_transition():
+	is_fade_out = true
+	print("night_transition" + str(clock.get_wait_time()))
+	clock.timeout.disconnect(day_transition)
+	clock.set_wait_time(5)
+	clock.timeout.connect(reconnect_clock)
+
+func reconnect_clock():
+	if clock.timeout.is_connected(night_transition):
+		clock.timeout.disconnect(night_transition)
+	if clock.timeout.is_connected(day_transition):
+		clock.timeout.disconnect(day_transition)
+	clock.timeout.disconnect(reconnect_clock)
+	clock.timeout.connect(Clock)
+	clock.set_wait_time(clock_speed)
+	if globals.is_night:
+		print("here?")
+		clock.start()
+	else:
+		pause_clock()
+		Clock()
+	opacity = 0
+	_fade()
+	is_fade_in = false
+	is_fade_out = false
+	nightchange_text.hide()
+	if globals.scene_room == "Foyer":
+		var room = $Foyer_Room
+		room.rebutton()
+	elif globals.scene_room == "Basement":
+		var room = $Basement_room
+		room.rebutton()
+	elif globals.scene_room == "Bathroom":
+		var room = $bathroom
+		room.rebutton()
+	elif globals.scene_room == "Bedroom":
+		var room = $bedroom
+		room.rebutton()
+	elif globals.scene_room == "Kitchen":
+		var room = $Kitchen_room
+		room.rebutton()
+	elif globals.scene_room == "Living":
+		var room = $living
+		room.rebutton()
+	elif globals.scene_room == "Study":
+		var room = $Study_room
+		room.rebutton()
+	else:
+		var room = $Upstairs_hallway
+		room.rebutton()
+		
+	print("reconnected clock")
 
 # Summons a monster at random, frequency and monster type depend on days
 func random_monster_summon():
@@ -122,7 +267,6 @@ func random_monster_summon():
 			else:
 				loop = true
 	loop = true
-	
 
 
 func game_over(cause_of_death: String = "imp"):
@@ -151,18 +295,16 @@ func skinwalker_dies():
 
 # called whenever the clock needs to pause. calls unpause_clock later
 func pause_clock():
+	print("paused")
 	clock.set_paused(true)
-	var dayButton = Button.new() 
-	add_child(dayButton)
-	dayButton.scale = Vector2(10, 10)
-	dayButton.pressed.connect(unpause_clock) # unpause and remove button on pressed
-	dayButton.pressed.connect(dayButton.queue_free)
 
 func unpause_clock(): #what do you think
-		clock.set_paused(false)
+	print("unpaused")
+	clock.set_paused(false)
 
 # Called when script detects a scene change
 func _scene_change():
+	print("changing scenes")
 	text_room.clear()
 	text_room.add_text(globals.scene_room)
 	opacity = 1
@@ -171,12 +313,15 @@ func _scene_change():
 	Camera_y = 0
 	x = 0
 	y = 0
-	black_screen.modulate = Color(1,1,1,1)
+	black_screen.modulate = Color(1,1,1,1) 
 
 
 # Called whenever the black screen needs to fade in or out.
 func _fade():
+	print("fading")
 	black_screen.modulate = Color(1,1,1,opacity)
+	if nightchange_text.visible:
+		nightchange_text.modulate = Color(1,1,1,opacity)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -185,7 +330,16 @@ func _process(delta: float) -> void:
 		if opacity == 0:
 			is_fade_out = false
 		else:
-			opacity -= .02
+			opacity -= .0078125
+			print("fading_out")
+			_fade()
+# processes the fading in sequence
+	if is_fade_in:
+		if opacity == 1:
+			is_fade_in = false
+		else:
+			opacity += .0078125
+			print("fading in")
 			_fade()
 # Processes idle Camera movement. 
 	var Camera = $Camera2D
@@ -194,3 +348,14 @@ func _process(delta: float) -> void:
 	Camera_x += cos(x) * Camera_intensity * Camera_speed / 14.19
 	Camera_y += sin(y) * Camera_intensity * Camera_speed / 8
 	Camera.set_offset(Vector2(Camera_x, Camera_y))
+
+
+func _on_add_5_minutes_pressed():
+	time_change(5)
+
+func _on_add_30_minutes_pressed() -> void:
+	time_change(30)
+
+
+func _on_timer_timeout() -> void:
+	print("timeout")

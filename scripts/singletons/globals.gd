@@ -9,6 +9,8 @@ var cause_of_death: String
 var monsters: Array = ["imp", "skinwalker"]
 var imp: bool = false
 var skinwalker: bool = false
+var hour: int = 12
+var minute: int = 0
 
 
 func monsters_size():

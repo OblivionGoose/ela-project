@@ -5,6 +5,7 @@ extends Node2D
 @onready var button3 = $Button3
 @onready var background = $Sprite2D
 @onready var black_screen = $BlackTransition
+var windowed: bool = false
 var fade: bool = false
 var opacity: float = 0
 
@@ -15,6 +16,15 @@ func _ready():
 	button2.pressed.connect(_button_pressed2)
 	button3.pressed.connect(window)
 
+func unbutton():
+	button1.hide()
+	button2.hide()
+	button3.hide()
+
+func rebutton():
+	button1.show()
+	button2.show()
+	button3.show()
 
 func _button_pressed():
 	fade = true
@@ -23,8 +33,16 @@ func _button_pressed():
 	timer.start()
 	timer.timeout.connect(move_scene1)
 func move_scene1():
-	globals.scene_room = "Kitchen"
-	globals.game_controller.change_2d_scene("res://scenes/Room Scenes/kitchen_room.tscn")
+	if globals.hour == 6 or 21:
+		if globals.minute == 0:
+			fade = false
+			black_screen.modulate = Color(1,1,1,0)
+		else:
+			globals.scene_room = "Kitchen"
+			globals.game_controller.change_2d_scene("res://scenes/Room Scenes/kitchen_room.tscn")
+	else:
+		globals.scene_room = "Kitchen"
+		globals.game_controller.change_2d_scene("res://scenes/Room Scenes/kitchen_room.tscn")
 
 func _button_pressed2():
 	fade = true
@@ -33,11 +51,20 @@ func _button_pressed2():
 	timer.start()
 	timer.timeout.connect(move_scene2)
 func move_scene2():
-	globals.scene_room = "Foyer"
-	globals.game_controller.change_2d_scene("res://scenes/Room Scenes/foyer_room.tscn")
+	if globals.hour == 6 or 21:
+		if globals.minute == 0:
+			fade = false
+			black_screen.modulate = Color(1,1,1,0)
+		else:
+				globals.scene_room = "Foyer"
+				globals.game_controller.change_2d_scene("res://scenes/Room Scenes/foyer_room.tscn")
+	else:
+		globals.scene_room = "Foyer"
+		globals.game_controller.change_2d_scene("res://scenes/Room Scenes/foyer_room.tscn")
 
 func window():
 	background.hide()
+	windowed = true
 	button1.hide()
 	button2.hide()
 	button3.hide()
@@ -45,9 +72,12 @@ func window():
 	add_child(window_button)
 	window_button.scale = Vector2(20, 10)
 	window_button.pressed.connect(unwindow) # unpause and remove button on pressed
-	window_button.pressed.connect(window_button.queue_free)
 
 func unwindow():
+	if windowed:
+		windowed = false
+		var window_butt = get_child(-1)
+		window_butt.queue_free()
 	background.show()
 	button1.show()
 	button2.show()
