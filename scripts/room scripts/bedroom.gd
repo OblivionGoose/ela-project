@@ -25,7 +25,7 @@ func _button_pressed():
 	timer.start()
 	timer.timeout.connect(move_scene1)
 func move_scene1():
-	if globals.hour == 6 or 21:
+	if globals.hour == 6 or globals.hour == 21:
 		if globals.minute == 0:
 			fade = false
 			black_screen.modulate = Color(1,1,1,0)

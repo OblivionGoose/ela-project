@@ -35,13 +35,13 @@ func _ready():
 	text_daytime.add_text(str(globals.time_of_day))
 	rng.randomize()
 	clock_text.modulate = Color(0,0,0,1)
+	Clock()
 
 func Clock():
 	if globals.is_night:
 		clock.start()
 		minute += 5
 		print("tick") 
-
 	
 	if globals.is_night:
 		random_monster_summon()
@@ -70,12 +70,13 @@ func Clock():
 		night_change()
 		unpause_clock()
 	print(clockHour + ":" + clockMinute)
+	print(globals.hour + globals.minute)
 	clock_text.clear()
 	clock_text.add_text(clockHour + ":" + clockMinute)
 
 func time_change(added_time: int):
 	var new_time: int
-	new_time = hour + (minute+added_time)/60 # intended
+	new_time = hour + (minute+added_time)/60 # error is intended
 	if new_time > 21:
 		printerr("Error! time added surpassed the nighttime cut off at hour 21")
 		hour = 21 

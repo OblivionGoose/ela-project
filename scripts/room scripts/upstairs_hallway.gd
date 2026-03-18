@@ -25,13 +25,12 @@ func rebutton():
 
 func _button_pressed():
 	fade = true
-	var button1 = $Button
 	button1.set_disabled(true)
 	var timer = $Timer
 	timer.start()
 	timer.timeout.connect(move_scene1)
 func move_scene1():
-	if globals.hour == 6 or 21:
+	if globals.hour == 6 or globals.hour == 21:
 		if globals.minute == 0:
 			fade = false
 			black_screen.modulate = Color(1,1,1,0)
@@ -44,13 +43,12 @@ func move_scene1():
 
 func _button_pressed2():
 	fade = true
-	var button1 = $Button
 	button1.set_disabled(true)
 	var timer = $Timer
 	timer.start()
 	timer.timeout.connect(move_scene2)
 func move_scene2():
-	if globals.hour == 6 or 21:
+	if globals.hour == 6 or globals.hour == 21:
 		if globals.minute == 0:
 			fade = false
 			black_screen.modulate = Color(1,1,1,0)
@@ -63,13 +61,12 @@ func move_scene2():
 
 func _button_pressed3():
 	fade = true
-	var button1 = $Button
 	button1.set_disabled(true)
 	var timer = $Timer
 	timer.start()
 	timer.timeout.connect(move_scene3)
 func move_scene3():
-	if globals.hour == 6 or 21:
+	if globals.hour == 6 or globals.hour == 21:
 		if globals.minute == 0:
 			fade = false
 			black_screen.modulate = Color(1,1,1,0)
