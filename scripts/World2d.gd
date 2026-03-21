@@ -146,8 +146,6 @@ func night_change():
 		is_fade_out = false
 		is_fade_in = true
 		audio.play()
-		nightchange_text.clear()
-		nightchange_text.add_text(globals.time_of_day)
 		clock.timeout.disconnect(Clock)
 		clock.set_wait_time(5.0)
 		clock.start()
@@ -158,13 +156,14 @@ func night_change():
 		is_fade_out = false
 		is_fade_in = true
 		audio.play()
-		nightchange_text.clear()
-		nightchange_text.add_text(globals.time_of_day)
 		clock.timeout.disconnect(Clock)
 		clock.set_wait_time(5.0)
 		hour = 14
 		clock.start()
 		clock.timeout.connect(night_transition)
+	
+	nightchange_text.clear()
+	nightchange_text.add_text(globals.time_of_day)
 	text_daytime.clear()
 	text_daytime.add_text(str(globals.time_of_day))
 

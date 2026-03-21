@@ -1,15 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cueowk2svprw6"]
+[gd_scene load_steps=3 format=3 uid="uid://cueowk2svprw6"]
 
 [ext_resource type="Script" uid="uid://0bxjsv40qakq" path="res://scripts/room scripts/bedroom.gd" id="1_iw0c1"]
+[ext_resource type="Texture2D" uid="uid://dp3hljw2qibbf" path="res://Assets/sprites/room sprites/7617254170998359426.png" id="2_oxh5v"]
 
 [node name="bedroom" type="Node2D"]
 script = ExtResource("1_iw0c1")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 517.0
-offset_top = 457.0
+offset_top = 511.0
 offset_right = 656.0
-offset_bottom = 594.0
+offset_bottom = 648.0
 
 [node name="Arrow" type="Polygon2D" parent="Button"]
 position = Vector2(108.00003, 23.000008)
@@ -29,3 +30,9 @@ scale = Vector2(4.1762457, 4.484693)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
 uv = PackedVector2Array(-206, -36.75, 183.5, -38.75, 185.5, 155.75, -202.5, 157.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(571, 327)
+scale = Vector2(0.62395835, 0.6333333)
+texture = ExtResource("2_oxh5v")
